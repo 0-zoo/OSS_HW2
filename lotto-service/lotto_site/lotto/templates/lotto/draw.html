@@ -1,0 +1,32 @@
+{% extends 'lotto/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>로또 추첨</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">로또 번호 추첨</button>
+    </form>
+
+    {% if winning_ticket %}
+        <h3>당첨된 티켓</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>티켓 유형</th>
+                    <th>로또 번호</th>
+                    <th>구매자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ winning_ticket.ticket_type }}</td>
+                    <td>{{ winning_ticket.numbers|join:", " }}</td>
+                    <td>{{ winning_ticket.user.username }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

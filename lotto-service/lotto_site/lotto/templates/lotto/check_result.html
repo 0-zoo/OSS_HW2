@@ -1,0 +1,30 @@
+{% extends 'lotto/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>당첨 결과</h2>
+    
+    {% if results %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>회차</th>
+                    <th>번호</th>
+                    <th>당첨 순위</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.ticket.draw_round }}</td>
+                    <td>{{ result.ticket.numbers }}</td>
+                    <td>{{ result.rank }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>당첨 결과가 없습니다.</p>
+    {% endif %}
+</div>
+{% endblock %}

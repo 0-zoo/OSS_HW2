@@ -1,0 +1,32 @@
+{% extends 'lotto/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>구매 결과</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>티켓 유형</th>
+                <th>로또 번호</th>
+                <th>번호 선택</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ ticket_type }}</td>
+                <td>{{ numbers|join:", " }}</td>
+                <td>
+                    {% if ticket_type == 'AUTO' %}
+                        자동으로 선택된 번호입니다.
+                    {% else %}
+                        사용자가 입력한 번호입니다.
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'lotto:purchase_ticket' %}" class="btn btn-secondary">다시 구매하기</a>
+</div>
+{% endblock %}

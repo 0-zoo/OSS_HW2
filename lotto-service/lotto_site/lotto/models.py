@@ -8,11 +8,10 @@ class LottoTicket(models.Model):
         ('AUTO', '자동'),
         ('MANUAL', '수동'),
     ]
-    
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # null 허용
     purchase_date = models.DateTimeField(auto_now_add=True)
     ticket_type = models.CharField(max_length=6, choices=TICKET_TYPE_CHOICES)
-    numbers = models.JSONField()  # [1, 15, 21, 35, 38, 45] 형식으로 저장
+    numbers = models.JSONField()
     draw_round = models.IntegerField()
     
     def __str__(self):

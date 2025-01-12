@@ -1,0 +1,35 @@
+{% extends 'lotto/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>로또 구매</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="ticket_type">구매 유형</label>
+            <select class="form-control" id="ticket_type" name="ticket_type">
+                <option value="AUTO">자동</option>
+                <option value="MANUAL">수동</option>
+            </select>
+        </div>
+        
+        <div class="form-group" id="manual-numbers" style="display: none;">
+            <label for="numbers">수동 번호 (쉼표로 구분)</label>
+            <input type="text" class="form-control" id="numbers" name="numbers">
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3">구매하기</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('ticket_type').addEventListener('change', function() {
+        var ticketType = this.value;
+        if (ticketType === 'MANUAL') {
+            document.getElementById('manual-numbers').style.display = 'block';
+        } else {
+            document.getElementById('manual-numbers').style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

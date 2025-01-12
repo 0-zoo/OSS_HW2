@@ -1,0 +1,27 @@
+{% extends 'lotto/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>통계</h2>
+    <p><strong>전체 판매된 로또 티켓 수:</strong> {{ total_tickets }}</p>
+    <p><strong>전체 당첨자 수:</strong> {{ total_winners }}</p>
+    
+    <h3>당첨자 통계</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>당첨 순위</th>
+                <th>당첨자 수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rank_stat in winners_by_rank %}
+            <tr>
+                <td>{{ rank_stat.rank }}</td>
+                <td>{{ rank_stat.count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
