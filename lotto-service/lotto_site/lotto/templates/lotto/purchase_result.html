@@ -2,14 +2,14 @@
 
 {% block content %}
 <div class="container">
-    <h2>구매 결과</h2>
+    <h2>당첨 결과</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>티켓 유형</th>
                 <th>로또 번호</th>
-                <th>번호 선택</th>
+                <th>당첨 여부</th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +17,10 @@
                 <td>{{ ticket_type }}</td>
                 <td>{{ numbers|join:", " }}</td>
                 <td>
-                    {% if ticket_type == 'AUTO' %}
-                        자동으로 선택된 번호입니다.
+                    {% if results %}
+                        당첨된 번호입니다!
                     {% else %}
-                        사용자가 입력한 번호입니다.
+                        아쉽게도 당첨되지 않았습니다.
                     {% endif %}
                 </td>
             </tr>

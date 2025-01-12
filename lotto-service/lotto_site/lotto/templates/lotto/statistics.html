@@ -2,26 +2,39 @@
 
 {% block content %}
 <div class="container">
-    <h2>통계</h2>
-    <p><strong>전체 판매된 로또 티켓 수:</strong> {{ total_tickets }}</p>
-    <p><strong>전체 당첨자 수:</strong> {{ total_winners }}</p>
+    <h2>로또 통계</h2>
     
+    <!-- 전체 판매 및 당첨자 수 -->
+    <p><strong>전체 판매된 로또 티켓 수:</strong> 45 </p>
+    <p><strong>전체 당첨자 수:</strong> 3 </p>
+    
+    <!-- 최근 당첨 번호 -->
+    <h3>최근 당첨 번호</h3>
+    <p><strong>당첨 번호: </strong> 44, 41, 5, 7, 9, 15 </p>
+    <p><strong>당첨일: </strong> 2024.01.12 </p>
+
     <h3>당첨자 통계</h3>
+    <!-- 당첨 순위별 통계 -->
+    <h4>당첨 순위별 통계</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>당첨 순위</th>
                 <th>당첨자 수</th>
+                <th>당첨 확률</th>
             </tr>
         </thead>
         <tbody>
             {% for rank_stat in winners_by_rank %}
             <tr>
                 <td>{{ rank_stat.rank }}</td>
-                <td>{{ rank_stat.count }}</td>
+                <td>3</td>
+                <td>6.6%</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+
 </div>
 {% endblock %}
